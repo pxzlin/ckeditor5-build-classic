@@ -28,28 +28,69 @@
 
 <script src="../build/ckeditor.js"></script>
 <script>
-	// basic
-	// $toolbar .= "['Bold', 'Italic', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],['Maximize'],\r\n";
 	// full
 	// $toolbar .= "'-','Templates'],
-	// ['PasteText','PasteFromWord'],
-	// ['Undo','Redo','-','Find','Replace','-','RemoveFormat'],
-	// ['Bold','Underline','Strike'],
-	// ['Subscript','Superscript'],
-	// ['Image'],['Maximize'],
-	// '/',
-	// ['JustifyLeft','JustifyCenter'],
-	// ['Link','Unlink','Anchor'],
+	// ['PasteText'],
+	// ['Find','Replace','-','RemoveFormat'],
+	// ['Maximize'],
+	// ['Anchor'],
 	// ['HorizontalRule','Smiley','SpecialChar'],\r\n";
-	// // desc
-	// $toolbar = "['Bold', 'Italic', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink', '-', 'Image', '-','Source'],['Maximize'],\r\n";
-	ClassicEditor.create( document.querySelector( '#editor' ) )
-		.then( editor => {
-			window.editor = editor;
-		} )
-		.catch( err => {
-			console.error( err.stack );
-		} );
+
+	ClassicEditor.create( document.querySelector( '#editor' ),{
+		// blockToolbar: [
+		//             'paragraph', 'heading1', 'heading2', 'heading3',
+		//             '|',
+		//             'bulletedList', 'numberedList',
+		//             '|',
+		//             'blockQuote', 'imageUpload'
+		//         ],
+		wordCount: {
+			onUpdate: stats => {
+				// Prints the current content statistics.
+				console.log( `Characters: ${ stats.characters }\nWords: ${ stats.words }` );
+			}
+		},
+		toolbar: [
+			'heading',
+			'|',
+			'bold',
+			'italic',
+			'underline',
+			'strikeThrough',
+			'subScript',
+			'superScript',
+			'|',
+			'removeFormat',
+			'|',
+			'link',
+			'bulletedList',
+			'numberedList',
+			'alignment',
+			'horizontalLine',
+			'highLight',
+			'|',
+			'indent',
+			'outdent',
+			'|',
+			'fontSize',
+			'fontFamily',
+			'fontColor',
+			'|',
+			'imageUpload',
+			'blockQuote',
+			'insertTable',
+			'mediaEmbed',
+			'undo',
+			'redo'
+			]
+	} )
+	.then( editor => {
+		window.editor = editor;
+		editor.toolbarView.options.shouldGroupWhenFull = true;
+	} )
+	.catch( err => {
+		console.error( err.stack );
+	} );
 </script>
 
 </body>

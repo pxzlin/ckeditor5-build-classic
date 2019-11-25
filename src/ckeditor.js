@@ -30,6 +30,17 @@ import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 
 import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
+import HorizontalLine from '@ckeditor/ckeditor5-horizontal-line/src/horizontalline';
+import HighLight from '@ckeditor/ckeditor5-highlight/src/highlight';
+import RemoveFormat from '@ckeditor/ckeditor5-remove-format/src/removeformat';
+import Font from '@ckeditor/ckeditor5-font/src/font';
+import SubScript from '@ckeditor/ckeditor5-basic-styles/src/subscript';
+import SuperScript from '@ckeditor/ckeditor5-basic-styles/src/superscript';
+import UnderLine from '@ckeditor/ckeditor5-basic-styles/src/underline';
+import StrikeThrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough';
+import WordCount from '@ckeditor/ckeditor5-word-count/src/wordcount';
+
+
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -57,24 +68,49 @@ ClassicEditor.builtinPlugins = [
 	PasteFromOffice,
 	Table,
 	TableToolbar,
-	Alignment
+	Alignment,
+	HorizontalLine,
+	HighLight,
+	RemoveFormat,
+	Font,
+	SubScript,
+	SuperScript,
+	UnderLine,
+	StrikeThrough,
+	WordCount
 ];
+
+
 
 // Editor configuration.
 ClassicEditor.defaultConfig = {
+
 	toolbar: {
 		items: [
 			'heading',
 			'|',
 			'bold',
 			'italic',
+			'underline',
+			'strikeThrough',
+			'subScript',
+			'superScript',
+			'|',
+			'removeFormat',
+			'|',
 			'link',
 			'bulletedList',
 			'numberedList',
 			'alignment',
+			'horizontalLine',
+			'highLight',
 			'|',
 			'indent',
 			'outdent',
+			'|',
+			'fontSize',
+			'fontFamily',
+			'fontColor',
 			'|',
 			'imageUpload',
 			'blockQuote',
