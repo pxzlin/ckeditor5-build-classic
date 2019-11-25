@@ -40,8 +40,6 @@ import UnderLine from '@ckeditor/ckeditor5-basic-styles/src/underline';
 import StrikeThrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough';
 import WordCount from '@ckeditor/ckeditor5-word-count/src/wordcount';
 
-
-
 export default class ClassicEditor extends ClassicEditorBase {}
 
 // Plugins to include in the build.
@@ -79,8 +77,6 @@ ClassicEditor.builtinPlugins = [
 	StrikeThrough,
 	WordCount
 ];
-
-
 
 // Editor configuration.
 ClassicEditor.defaultConfig = {
