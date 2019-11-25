@@ -28,6 +28,21 @@
 
 <script src="../build/ckeditor.js"></script>
 <script>
+	// basic
+	// $toolbar .= "['Bold', 'Italic', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],['Maximize'],\r\n";
+	// full
+	// $toolbar .= "'-','Templates'],
+	// ['PasteText','PasteFromWord'],
+	// ['Undo','Redo','-','Find','Replace','-','RemoveFormat'],
+	// ['Bold','Underline','Strike'],
+	// ['Subscript','Superscript'],
+	// ['Image'],['Maximize'],
+	// '/',
+	// ['JustifyLeft','JustifyCenter'],
+	// ['Link','Unlink','Anchor'],
+	// ['HorizontalRule','Smiley','SpecialChar'],\r\n";
+	// // desc
+	// $toolbar = "['Bold', 'Italic', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink', '-', 'Image', '-','Source'],['Maximize'],\r\n";
 	ClassicEditor.create( document.querySelector( '#editor' ) )
 		.then( editor => {
 			window.editor = editor;
