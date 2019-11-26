@@ -13,7 +13,6 @@ import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
 import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
 import CKFinder from '@ckeditor/ckeditor5-ckfinder/src/ckfinder';
-import EasyImage from '@ckeditor/ckeditor5-easy-image/src/easyimage';
 import Heading from '@ckeditor/ckeditor5-heading/src/heading';
 import Image from '@ckeditor/ckeditor5-image/src/image';
 import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption';
@@ -39,7 +38,6 @@ import SuperScript from '@ckeditor/ckeditor5-basic-styles/src/superscript';
 import UnderLine from '@ckeditor/ckeditor5-basic-styles/src/underline';
 import StrikeThrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough';
 import WordCount from '@ckeditor/ckeditor5-word-count/src/wordcount';
-import ToolbarView from '@ckeditor/ckeditor5-ui/src/toolbar/toolbarview';
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -52,7 +50,6 @@ ClassicEditor.builtinPlugins = [
 	Italic,
 	BlockQuote,
 	CKFinder,
-	EasyImage,
 	Heading,
 	Image,
 	ImageCaption,
@@ -78,12 +75,28 @@ ClassicEditor.builtinPlugins = [
 	StrikeThrough,
 	WordCount
 ];
-
-ToolbarView.options.shouldGroupWhenFull = false;
-
 // Editor configuration.
 ClassicEditor.defaultConfig = {
-
+	fontFamily: {
+		options: [
+			'default',
+			'宋体',
+			'黑体',
+			'仿宋',
+			'楷体',
+			'隶书',
+			'幼圆',
+			'微软雅黑',
+			'Arial',
+			'Courier New',
+			'Georgia',
+			'Lucida Sans Unicode',
+			'Tahoma',
+			'Times New Roman',
+			'Trebuchet MS',
+			'Verdana'
+		]
+	},
 	toolbar: {
 		items: [
 			'heading',
@@ -133,7 +146,5 @@ ClassicEditor.defaultConfig = {
 			'tableRow',
 			'mergeTableCells'
 		]
-	},
-	// This value must be kept in sync with the language defined in webpack.config.js.
-	language: 'zh-cn'
+	}
 };

@@ -31,7 +31,7 @@
 	// full
 	// $toolbar .= "'-','Templates'],
 	// ['PasteText'],
-	// ['Find','Replace','-','RemoveFormat'],
+	// ['Find','Replace'],
 	// ['Maximize'],
 	// ['Anchor'],
 	// ['HorizontalRule','Smiley','SpecialChar'],\r\n";
@@ -50,43 +50,60 @@
 				console.log( `Characters: ${ stats.characters }\nWords: ${ stats.words }` );
 			}
 		},
-		toolbar: [
+		image: {
+			upload: {
+				types: [ 'png', 'jpeg', 'bmp']
+			}
+		},
+		ckfinder: {
+			uploadUrl: 'https://example.com/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images&responseType=json',
+			options: {
+				resourceType: 'Images'
+			}
+		},
+		// toolbarView:{
+		// 	shouldGroupWhenFull: false,
+		// },
+		toolbar: {
+
+			items: [
 			'heading',
 			'|',
 			'bold',
+			'link',
+			'|',
+			'removeFormat',
+			'|',
+			'alignment',
+			'horizontalLine',
+			'indent',
+			'outdent',
+			'|',
+			'imageUpload',
+			'mediaEmbed',
+			'|',
+			'fontSize',
+			'fontFamily',
+			'fontColor',
+			'highLight',
+			'|',
+			'bulletedList',
+			'numberedList',
+			'|',
+			'insertTable',
 			'italic',
 			'underline',
 			'strikeThrough',
 			'subScript',
 			'superScript',
-			'|',
-			'removeFormat',
-			'|',
-			'link',
-			'bulletedList',
-			'numberedList',
-			'alignment',
-			'horizontalLine',
-			'highLight',
-			'|',
-			'indent',
-			'outdent',
-			'|',
-			'fontSize',
-			'fontFamily',
-			'fontColor',
-			'|',
-			'imageUpload',
-			'blockQuote',
-			'insertTable',
-			'mediaEmbed',
 			'undo',
 			'redo'
 			]
+		}
 	} )
 	.then( editor => {
 		window.editor = editor;
-		editor.config.toolbar.toolbarView.shouldGroupWhenFull = false;
+		//editor.config.toolbar.options.shouldGroupWhenFull = false;
 	} )
 	.catch( err => {
 		console.error( err.stack );
