@@ -39,6 +39,7 @@ import SuperScript from '@ckeditor/ckeditor5-basic-styles/src/superscript';
 import UnderLine from '@ckeditor/ckeditor5-basic-styles/src/underline';
 import StrikeThrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough';
 import WordCount from '@ckeditor/ckeditor5-word-count/src/wordcount';
+import ToolbarView from '@ckeditor/ckeditor5-ui/src/toolbar/toolbarview';
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -77,6 +78,8 @@ ClassicEditor.builtinPlugins = [
 	StrikeThrough,
 	WordCount
 ];
+
+ToolbarView.options.shouldGroupWhenFull = false;
 
 // Editor configuration.
 ClassicEditor.defaultConfig = {

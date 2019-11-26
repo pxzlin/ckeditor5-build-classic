@@ -86,7 +86,7 @@
 	} )
 	.then( editor => {
 		window.editor = editor;
-		editor.toolbarView.options.shouldGroupWhenFull = true;
+		editor.config.toolbar.toolbarView.shouldGroupWhenFull = false;
 	} )
 	.catch( err => {
 		console.error( err.stack );
