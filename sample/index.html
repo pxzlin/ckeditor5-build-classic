@@ -100,6 +100,26 @@
 	} )
 	.then( editor => {
 		editors[ 'content' ] = editor;
+		editor.editing.view.document.on( 'clipboardInput', ( evt, data ) => {
+			console.log(123);
+		//     const dataTransfer = data.dataTransfer;
+		//     const rtfContent = dataTransfer.getData( 'application/rtf' );
+		
+		//     // If no RTF was pasted, abort and let the clipboard feature handle the input.
+		//     if ( !rtfContent ) {
+		//         return;
+		//     }
+		
+		//     // Convert an RTF raw string to a view document fragment.
+		//     const viewContent = convertRtfStringToView( rtfContent );
+		
+		//     // Just like the clipboard feature, trigger the inputTransformation event
+		//     // to allow further processing of the content.
+		//     this.fire( 'inputTransformation', { content: viewContent, dataTransfer } );
+		
+		//     editor.editing.view.scrollToTheSelection();
+		//     evt.stop();
+		} );
 		editor.ui.focusTracker.on( 'change:isFocused', ( evt, name, value ) => {
 		    console.log( 'isFocused = ', value );
 		} );
