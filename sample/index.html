@@ -100,6 +100,7 @@
 	} )
 	.then( editor => {
 		editors[ 'content' ] = editor;
+
 		editor.model.change( writer => {
 		    writer.insertText( 'foo', editor.model.document.selection.getFirstPosition() );
 		} );
@@ -133,7 +134,8 @@
 		editor.ui.focusTracker.on( 'change:isFocused', ( evt, name, value ) => {
 		    console.log( 'isFocused = ', value );
 		} );
-		//editor.config.toolbar.options.shouldGroupWhenFull = false;
+		console.log(editor.config.get('toolbar.collapsed'));
+		editor.config.set('toolbar.toolbarView.shouldGroupWhenFull',false);
 	} )
 	.catch( err => {
 		console.error( err.stack );
