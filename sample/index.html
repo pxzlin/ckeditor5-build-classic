@@ -14,6 +14,18 @@
 		.ck-editor__editable_inline {
 		    height: 400px;
 		}
+
+		a[target]::after {
+		    content: "target=\"" attr(target) "\"";
+		    font-size: 0.6em;
+		    position: relative;
+		    left: 0em;
+		    top: -1em;
+		    background: #00ffa6;
+		    color: #000;
+		    padding: 1px 3px;
+		    border-radius: 10px;
+		}
 	</style>
 </head>
 <body>
@@ -43,7 +55,36 @@
 	// ['Maximize'],
 	// ['Anchor']
 	const editors = {};
+
+	function AllowLinkTarget( editor ) {
+	    // Allow the "linkTarget" attribute in the editor model.
+	    editor.model.schema.extend( '$text', { allowAttributes: 'linkTarget' } );
+
+	    // Tell the editor that the model "linkTarget" attribute converts into <a target="..."></a>
+	    editor.conversion.for( 'downcast' ).attributeToElement( {
+	        model: 'linkTarget',
+	        view: ( attributeValue, writer ) => {
+	            const linkElement = writer.createAttributeElement( 'a', { target: attributeValue }, { priority: 5 } );
+	            writer.setCustomProperty( 'link', true, linkElement );
+
+	            return linkElement;
+	        },
+	        converterPriority: 'low'
+	    } );
+
+	    // Tell the editor that <a target="..."></a> converts into the "linkTarget" attribute in the model.
+	    editor.conversion.for( 'upcast' ).attributeToAttribute( {
+	        view: {
+	            name: 'a',
+	            key: 'target'
+	        },
+	        model: 'linkTarget',
+	        converterPriority: 'low'
+	    } );
+	}
+
 	ClassicEditor.create( document.querySelector( '#editor' ),{
+		extraPlugins: [ AllowLinkTarget ],
 		wordCount: {
 			onUpdate: stats => {
 				// Prints the current content statistics.
@@ -65,6 +106,7 @@
 		// 	shouldGroupWhenFull: false,
 		// },
 		toolbar: [
+			'insertImage',
 			'heading',
 			'|',
 			'bold',
@@ -111,8 +153,22 @@
 		        writer.setAttribute( 'bold', true, range );
 		    }
 		} );
-		editor.editing.view.document.on( 'clipboardInput', ( evt, data ) => {
 
+		const clipboardPlugin = editor.plugins.get( 'Clipboard' );
+
+		editor.editing.view.document.on( 'paste', ( evt, data ) => {
+			console.log('paste');
+			const dataTransfer = data.dataTransfer;
+			var content = dataTransfer.getData( 'text/html' );
+			content = content.replace(/data\-src/g,"src");
+			// dataTransfer.setData('text/html',"helloBack");
+			content = clipboardPlugin._htmlDataProcessor.toView( content );
+			clipboardPlugin.fire( 'inputTransformation', { content, dataTransfer } );
+
+			evt.stop();
+		});
+		editor.editing.view.document.on( 'clipboardInput', ( evt, data ) => {
+			console.log('clipboardInput');
 // 		    const dataTransfer = data.dataTransfer;
 // 		    const rtfContent = dataTransfer.getData( );
 // console.log(rtfContent);

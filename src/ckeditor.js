@@ -39,12 +39,52 @@ import UnderLine from '@ckeditor/ckeditor5-basic-styles/src/underline';
 import StrikeThrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough';
 import WordCount from '@ckeditor/ckeditor5-word-count/src/wordcount';
 
+import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
+
+import imageIcon from '@ckeditor/ckeditor5-core/theme/icons/image.svg';
+
+import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
+
+class InsertImage extends Plugin {
+	init() {
+		const editor = this.editor;
+
+		editor.ui.componentFactory.add( 'insertImage', locale => {
+			const view = new ButtonView( locale );
+
+			view.set( {
+				label: 'Insert image',
+				icon: imageIcon,
+				tooltip: true
+			} );
+
+			// Callback executed once the image is clicked.
+			view.on( 'execute', () => {
+				const imageUrl = prompt( 'Image URL' );
+
+				editor.model.change( writer => {
+					const imageElement = writer.createElement( 'image', {
+						src: imageUrl
+					} );
+
+					// Insert the image in the current selection location.
+					editor.model.insertContent( imageElement, editor.model.document.selection );
+				} );
+			} );
+
+			return view;
+		} );
+	}
+}
+
+
 import '../theme/black.css';
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
 // Plugins to include in the build.
 ClassicEditor.builtinPlugins = [
+	InsertImage,
 	Essentials,
 	UploadAdapter,
 	Autoformat,
