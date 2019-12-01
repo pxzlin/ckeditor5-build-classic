@@ -78,7 +78,7 @@ class InsertImage extends Plugin {
 }
 
 
-import '../theme/black.css';
+// import '../theme/black.css';
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
