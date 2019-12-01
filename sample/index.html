@@ -45,6 +45,7 @@
 </textarea>
 
 <button onclick="getData()">getData</button>
+<button onclick="insertLink()">insertLink</button>
 
 <script src="../build/ckeditor.js"></script>
 <script>
@@ -93,7 +94,7 @@
 		},
 		image: {
 			upload: {
-				types: [ 'png', 'jpeg', 'bmp']
+				types: [ 'png', 'jpeg', 'bmp', 'gif' ]
 			}
 		},
 		// ckfinder: {
@@ -198,6 +199,15 @@
 	} );
 	function getData(){
 		console.log(editors['content'].getData());
+	}
+	function insertLink(){
+		var editor = editors[ 'content' ]
+		editor.model.change( writer => {
+			var linkText = 'this is a link!';
+			var linkUrl = 'http://www.baidu.com/';
+		    const insertPosition = editor.model.document.selection.getFirstPosition();
+		    writer.insertText( linkText, { linkHref: linkUrl }, insertPosition );
+		} );
 	}
 </script>
 
