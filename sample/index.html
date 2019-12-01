@@ -46,7 +46,7 @@
 
 <button onclick="getData()">getData</button>
 <button onclick="insertLink()">insertLink</button>
-
+<button onclick="insertText()">insertText</button>
 <script src="../build/ckeditor.js"></script>
 <script>
 	// full
@@ -97,12 +97,12 @@
 				types: [ 'png', 'jpeg', 'bmp', 'gif' ]
 			}
 		},
-		// ckfinder: {
-		// 	uploadUrl: 'https://example.com/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images&responseType=json',
-		// 	options: {
-		// 		resourceType: 'Images'
-		// 	}
-		// },
+		ckfinder: {
+			uploadUrl: 'https://example.com/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images&responseType=json',
+			options: {
+				resourceType: 'Images'
+			}
+		},
 		// toolbarView:{
 		// 	shouldGroupWhenFull: false,
 		// },
@@ -138,7 +138,8 @@
 			'subScript',
 			'superScript',
 			'undo',
-			'redo'
+			'redo',
+			'clearContent'
 		]
 	} )
 	.then( editor => {
@@ -207,6 +208,13 @@
 			var linkUrl = 'http://www.baidu.com/';
 		    const insertPosition = editor.model.document.selection.getFirstPosition();
 		    writer.insertText( linkText, { linkHref: linkUrl }, insertPosition );
+		} );
+	}
+	function insertText(){
+		var editor = editors[ 'content' ]
+		editor.model.change( writer => {
+			var linkText = 'this is a link!';
+		    writer.insertText( linkText, editor.model.document.selection.getFirstPosition() );
 		} );
 	}
 </script>
