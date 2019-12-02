@@ -26,6 +26,13 @@
 		    padding: 1px 3px;
 		    border-radius: 10px;
 		}
+
+		.ck-word-count{
+			color: #999;
+			font-size: 12px;
+			line-height: 32px;
+			float: right;
+		}
 	</style>
 </head>
 <body>
@@ -43,7 +50,7 @@
 
 	<p>You can use this sample to validate whether your <a href="https://ckeditor.com/docs/ckeditor5/latest/builds/guides/development/custom-builds.html">custom build</a> works fine.</p>
 </textarea>
-
+<div id="word-count"></div>
 <button onclick="getData()">getData</button>
 <button onclick="insertLink()">insertLink</button>
 <button onclick="insertText()">insertText</button>
@@ -87,10 +94,11 @@
 	ClassicEditor.create( document.querySelector( '#editor' ),{
 		extraPlugins: [ AllowLinkTarget ],
 		wordCount: {
-			onUpdate: stats => {
-				// Prints the current content statistics.
-				console.log( `Characters: ${ stats.characters }\nWords: ${ stats.words }` );
-			}
+			displayWords: false,
+			// onUpdate: stats => {
+			// 	// Prints the current content statistics.
+			// 	console.log( `Characters: ${ stats.characters }\nWords: ${ stats.words }` );
+			// }
 		},
 		image: {
 			upload: {
@@ -143,6 +151,11 @@
 		]
 	} )
 	.then( editor => {
+
+		const wordCountPlugin = editor.plugins.get( 'WordCount' );
+		const wordCountWrapper = document.getElementById( 'word-count' );
+		wordCountWrapper.appendChild( wordCountPlugin.wordCountContainer );
+
 		editors[ 'content' ] = editor;
 
 		editor.model.change( writer => {
