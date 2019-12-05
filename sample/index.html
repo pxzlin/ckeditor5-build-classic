@@ -171,6 +171,15 @@
 
 		const clipboardPlugin = editor.plugins.get( 'Clipboard' );
 
+		editor.editing.view.document.on( 'imageLoaded', ( evt, data ) => {
+			console.log(data.target.getAttribute('src'));
+			var root = editor.editing.view.document.getRoot("image");
+			console.log(root);
+			root = editor.editing.view.getDomRoot();
+			console.log(root);
+		    console.log( 'imageLoaded' );
+		} );
+
 		editor.editing.view.document.on( 'paste', ( evt, data ) => {
 			console.log('paste');
 			const dataTransfer = data.dataTransfer;
