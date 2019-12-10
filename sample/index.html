@@ -33,6 +33,22 @@
 			line-height: 32px;
 			float: right;
 		}
+
+		.custom-block-indent-a {
+		    margin-left: 1em;
+		}
+
+		.custom-block-indent-b {
+		    margin-left: 2em;
+		}
+
+		.custom-block-indent-c {
+		    margin-left: 3em;
+		}
+
+		.custom-block-indent-d {
+		    margin-left: 4em;
+		}
 	</style>
 </head>
 <body>
@@ -65,7 +81,7 @@
 	const editors = {};
 
 	function AllowClassesPlugin( editor ) {
-		
+
 		editor.conversion.elementToElement( { model: 'figure',
 		view: {
 			name: 'figure',
@@ -192,13 +208,7 @@
 		} );
 
 		editor.editing.view.document.on( 'paste', ( evt, data ) => {
-			console.log('paste');
-			const dataTransfer = data.dataTransfer;
-			var content = dataTransfer.getData( 'text/html' );
-			content = content.replace(/data\-src/g,"src");
-			// dataTransfer.setData('text/html',"helloBack");
-			content = clipboardPlugin._htmlDataProcessor.toView( content );
-			clipboardPlugin.fire( 'inputTransformation', { content, dataTransfer } );
+
 
 			evt.stop();
 		});
