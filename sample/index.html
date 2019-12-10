@@ -125,7 +125,6 @@
 		// 	shouldGroupWhenFull: false,
 		// },
 		toolbar: [
-			'insertImage',
 			'heading',
 			'|',
 			'bold',
@@ -139,6 +138,7 @@
 			'outdent',
 			'|',
 			'imageUpload',
+			'insertImage',
 			'mediaEmbed',
 			'|',
 			'fontSize',
@@ -184,11 +184,10 @@
 		const clipboardPlugin = editor.plugins.get( 'Clipboard' );
 
 		editor.editing.view.document.on( 'imageLoaded', ( evt, data ) => {
-			console.log(data.target.getAttribute('src'));
-			var root = editor.editing.view.document.getRoot("image");
-			console.log(root);
-			root = editor.editing.view.getDomRoot();
-			console.log(root);
+			data.target.parentNode.classList.add("snow-container");
+			console.log(data.target.parentNode);
+			// var root = editor.editing.view.document.getRoot("image");
+			// root = editor.editing.view.getDomRoot();
 		    console.log( 'imageLoaded' );
 		} );
 
