@@ -44,9 +44,9 @@
 
 	<p>This is an instance of the <a href="https://ckeditor.com/docs/ckeditor5/latest/builds/guides/overview.html#classic-editor">classic editor build</a>.</p>
 
-	<figure class="image">
+
 		<img src="../tests/manual/sample.jpg" alt="Autumn fields" />
-	</figure>
+
 
 	<p>You can use this sample to validate whether your <a href="https://ckeditor.com/docs/ckeditor5/latest/builds/guides/development/custom-builds.html">custom build</a> works fine.</p>
 </textarea>
@@ -63,6 +63,16 @@
 	// ['Maximize'],
 	// ['Anchor']
 	const editors = {};
+
+	function AllowClassesPlugin( editor ) {
+		
+		editor.conversion.elementToElement( { model: 'figure',
+		view: {
+			name: 'figure',
+			classes: 'fancy22'
+		},
+		converterPriority: 'high' } );
+	}
 
 	function AllowLinkTarget( editor ) {
 	    // Allow the "linkTarget" attribute in the editor model.
@@ -92,7 +102,7 @@
 	}
 
 	ClassicEditor.create( document.querySelector( '#editor' ),{
-		extraPlugins: [ AllowLinkTarget ],
+		extraPlugins: [ AllowLinkTarget, AllowClassesPlugin ],
 		wordCount: {
 			displayWords: false,
 			// onUpdate: stats => {
@@ -151,6 +161,8 @@
 		]
 	} )
 	.then( editor => {
+
+
 
 		const wordCountPlugin = editor.plugins.get( 'WordCount' );
 		const wordCountWrapper = document.getElementById( 'word-count' );
