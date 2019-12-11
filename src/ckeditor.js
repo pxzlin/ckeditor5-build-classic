@@ -19,6 +19,7 @@ import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption';
 import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
 import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar';
 import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload';
+import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize';
 import Indent from '@ckeditor/ckeditor5-indent/src/indent';
 import IndentBlock from '@ckeditor/ckeditor5-indent/src/indentblock';
 import Link from '@ckeditor/ckeditor5-link/src/link';
@@ -31,7 +32,7 @@ import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 
 import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
 import HorizontalLine from '@ckeditor/ckeditor5-horizontal-line/src/horizontalline';
-import HighLight from '@ckeditor/ckeditor5-highlight/src/highlight';
+//import HighLight from '@ckeditor/ckeditor5-highlight/src/highlight';
 import RemoveFormat from '@ckeditor/ckeditor5-remove-format/src/removeformat';
 import Font from '@ckeditor/ckeditor5-font/src/font';
 import SubScript from '@ckeditor/ckeditor5-basic-styles/src/subscript';
@@ -126,6 +127,7 @@ ClassicEditor.builtinPlugins = [
 	ImageStyle,
 	ImageToolbar,
 	ImageUpload,
+	ImageResize,
 	Indent,
 	IndentBlock,
 	Link,
@@ -137,7 +139,7 @@ ClassicEditor.builtinPlugins = [
 	TableToolbar,
 	Alignment,
 	HorizontalLine,
-	HighLight,
+	//HighLight,
 	RemoveFormat,
 	Font,
 	SubScript,
@@ -186,7 +188,7 @@ ClassicEditor.defaultConfig = {
 			'numberedList',
 			'alignment',
 			'horizontalLine',
-			'highLight',
+			//'highLight',
 			'|',
 			'indent',
 			'outdent',
@@ -214,10 +216,16 @@ ClassicEditor.defaultConfig = {
 	},
 	image: {
 		toolbar: [
+			'imageStyle:alignLeft',
 			'imageStyle:full',
-			'imageStyle:side',
+			'imageStyle:alignRight',
 			'|',
 			'imageTextAlternative'
+		],
+		styles: [
+			'alignLeft',
+			'full',
+			'alignRight'
 		]
 		// styles: [
 		// 	{ name: 'side', isDefault: true },
