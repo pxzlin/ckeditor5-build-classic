@@ -7,9 +7,6 @@ export default class ClearContentUI extends Plugin {
 
 		const editor = this.editor;
 		const t = editor.t;
-		console.log( t( 'Cannot upload file:' ) );
-
-
 		editor.ui.componentFactory.add( 'clearContent', locale => {
 			const command = editor.commands.get( 'clearContent' );
 			const view = new ButtonView( locale );

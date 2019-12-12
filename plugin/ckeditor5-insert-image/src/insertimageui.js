@@ -11,7 +11,6 @@ export default class InsertImageUI extends Plugin {
 		this.form = new InsertImageFormView( getFormValidators( editor.t ), editor.locale );
 
 		editor.ui.componentFactory.add( 'insertImage', locale => {
-			console.log( locale );
 			const dropdown = createDropdown( locale );
 
 			this._setUpDropdown( dropdown, this.form, command, editor );

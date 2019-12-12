@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>CKEditor 5 – classic editor build – development sample</title>
-	<script src="../build/translations/en.js"></script>
+	<!-- <script src="../build/translations/en.js"></script> -->
 	<style>
 		body {
 			max-width: 800px;
@@ -119,7 +119,7 @@
 	}
 
 	ClassicEditor.create( document.querySelector( '#editor' ),{
-		language: 'en',
+		//language: 'en',
 		extraPlugins: [ AllowLinkTarget, AllowClassesPlugin ],
 		wordCount: {
 			displayWords: false,
@@ -209,7 +209,6 @@
 
 		editor.editing.view.document.on( 'imageLoaded', ( evt, data ) => {
 			data.target.parentNode.classList.add("snow-container");
-			console.log(data.target.parentNode);
 			// var root = editor.editing.view.document.getRoot("image");
 			// root = editor.editing.view.getDomRoot();
 		    console.log( 'imageLoaded' );

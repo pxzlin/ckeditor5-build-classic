@@ -47,7 +47,7 @@ export default class InsertImageFormView extends View {
 			attributes: {
 				class: [
 					'ck',
-					'ck-insertimage-form'
+					'ck-media-form'
 				],
 				tabindex: '-1'
 			},
