@@ -12,10 +12,10 @@
 #
 msgid ""
 msgstr ""
-"Language-Team: Chinese (Taiwan) (https://www.transifex.com/ckeditor/teams/11143/zh_TW/)\n"
-"Language: zh_TW\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
 
-msgctxt "Toolbar button tooltip for the 插入遠程圖片 feature."
-msgid "插入遠程圖片"
-msgstr "插入遠程圖片"
+msgctxt "Toolbar button tooltip for the Clear content feature."
+msgid "Clear content"
+msgstr "Clear content"

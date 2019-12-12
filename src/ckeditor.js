@@ -41,15 +41,8 @@ import UnderLine from '@ckeditor/ckeditor5-basic-styles/src/underline';
 import StrikeThrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough';
 import WordCount from '@ckeditor/ckeditor5-word-count/src/wordcount';
 
-import InsertImage from '../plugin/insertImage/src/insertimage.js'
-
-import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
-
-// import imageIcon from '../static/theme/icons/remote-image.svg';
-
-import deleteIcon from '../static/theme/icons/delete.svg';
-
-import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
+import InsertImage from '../plugin/insert-image/src/insertimage.js'
+import ClearContent from '../plugin/clear-content/src/clearcontent.js'
 
 // class InsertImage extends Plugin {
 // 	init() {
@@ -85,28 +78,28 @@ import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
 // 	}
 // }
 
-class ClearContent extends Plugin {
-	init() {
-		const editor = this.editor;
+// class ClearContent extends Plugin {
+// 	init() {
+// 		const editor = this.editor;
 
-		editor.ui.componentFactory.add( 'clearContent', locale => {
-			const view = new ButtonView( locale );
+// 		editor.ui.componentFactory.add( 'clearContent', locale => {
+// 			const view = new ButtonView( locale );
 
-			view.set( {
-				label: 'Clear content',
-				icon: deleteIcon,
-				tooltip: true
-			} );
+// 			view.set( {
+// 				label: 'Clear content',
+// 				icon: deleteIcon,
+// 				tooltip: true
+// 			} );
 
-			// Callback executed once the image is clicked.
-			view.on( 'execute', () => {
-				editor.setData( '' );
-			} );
+// 			// Callback executed once the image is clicked.
+// 			view.on( 'execute', () => {
+// 				editor.setData( '' );
+// 			} );
 
-			return view;
-		} );
-	}
-}
+// 			return view;
+// 		} );
+// 	}
+// }
 
 // import '../theme/black.css';
 

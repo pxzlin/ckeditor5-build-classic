@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>CKEditor 5 – classic editor build – development sample</title>
+	<script src="../build/translations/en.js"></script>
 	<style>
 		body {
 			max-width: 800px;
@@ -118,6 +119,7 @@
 	}
 
 	ClassicEditor.create( document.querySelector( '#editor' ),{
+		language: 'en',
 		extraPlugins: [ AllowLinkTarget, AllowClassesPlugin ],
 		wordCount: {
 			displayWords: false,
