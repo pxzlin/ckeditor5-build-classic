@@ -28,7 +28,7 @@ export default class InsertImageUI extends Plugin {
 		dropdown.bind( 'isEnabled' ).to( command );
 		dropdown.panelView.children.add( form );
 		button.set( {
-			label: t( 'Insert image' ),
+			label: t( 'Insert remote image' ),
 			icon: insertImageIcon,
 			tooltip: true
 		} );

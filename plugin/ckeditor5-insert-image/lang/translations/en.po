@@ -16,9 +16,9 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-msgctxt "Toolbar button tooltip for the Insert Image feature."
-msgid "Insert Image"
-msgstr "Insert Image"
+msgctxt "Toolbar button tooltip for the Insert remote image feature."
+msgid "Insert remote image"
+msgstr "Insert remote image"
 
 msgctxt "Label for the URL input in the Image Embed URL editing balloon."
 msgid "Image URL"

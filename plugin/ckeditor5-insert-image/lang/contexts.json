@@ -1,5 +1,5 @@
 {
-	"Insert Image": "Toolbar button tooltip for the InsertImage feature.",
+	"Insert remote image": "Toolbar button tooltip for the InsertImage feature.",
 	"Image URL": "Label for the URL input in the Image Embed URL editing balloon.",
 	"Paste the image URL in the input.": "The help text displayed under the image URL input helping users to discover the interface.",
 	"Tip: Paste the URL into the content to embed faster.": "The tip displayed next to the image URL input informing about an easier way of embedding.",

@@ -16,9 +16,9 @@ msgstr ""
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-msgctxt "Toolbar button tooltip for the Insert Image feature."
-msgid "Insert Image"
-msgstr "插入图片"
+msgctxt "Toolbar button tooltip for the Insert remote image feature."
+msgid "Insert remote image"
+msgstr "插入网络图片"
 
 msgctxt "Label for the URL input in the Image Embed URL editing balloon."
 msgid "Image URL"
