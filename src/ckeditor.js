@@ -44,6 +44,9 @@ import WordCount from '@ckeditor/ckeditor5-word-count/src/wordcount';
 import InsertImage from '../plugin/ckeditor5-insert-image/src/insertimage.js';
 import ClearContent from '../plugin/ckeditor5-clear-content/src/clearcontent.js';
 
+import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
+import { keyCodes } from '@ckeditor/ckeditor5-utils/src/keyboard';
+
 // class InsertImage extends Plugin {
 // 	init() {
 // 		const editor = this.editor;
@@ -101,12 +104,29 @@ import ClearContent from '../plugin/ckeditor5-clear-content/src/clearcontent.js'
 // 	}
 // }
 
+class TabIndent extends Plugin {
+	init() {
+		const editor = this.editor;
+		const view = editor.editing.view;
+		const viewDocument = view.document;
+		viewDocument.on( 'keydown', ( evt, data ) => {
+			if ( ( data.keyCode == keyCodes.tab ) && viewDocument.isFocused ) {
+				editor.execute( 'input', { text: '    ' } );
+				evt.stop(); // Prevent executing the default handler.
+				data.preventDefault();
+				view.scrollToTheSelection();
+			}
+		} );
+	}
+}
+
 // import '../theme/black.css';
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
 // Plugins to include in the build.
 ClassicEditor.builtinPlugins = [
+	TabIndent,
 	InsertImage,
 	ClearContent,
 	Essentials,
